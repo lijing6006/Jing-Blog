@@ -1102,6 +1102,15 @@ a {
   color: var(--jing-muted);
 }
 
+#post-meta .post-meta-wordcount,
+#post-meta .post-meta-pv-cv,
+#post-meta #busuanzi_container_page_pv,
+#post .post-meta-wordcount,
+#post .post-meta-pv-cv,
+#post #busuanzi_container_page_pv {
+  display: none !important;
+}
+
 .jing-site-stats {
   display: flex;
   flex-wrap: wrap;
