@@ -330,6 +330,87 @@
     }).catch(() => {});
   }
 
+  function createSiteStatItem(label, valueId, containerId, unit) {
+    const item = document.createElement('span');
+    item.className = 'jing-site-stats-item';
+    item.id = containerId;
+
+    const labelNode = document.createElement('span');
+    labelNode.textContent = label;
+
+    const valueNode = document.createElement('strong');
+    valueNode.id = valueId;
+    valueNode.textContent = '--';
+
+    const unitNode = document.createElement('span');
+    unitNode.textContent = unit;
+
+    item.append(labelNode, valueNode, unitNode);
+    return item;
+  }
+
+  function loadBusuanzi() {
+    const scriptUrl = '//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js';
+    const existing = document.querySelector('script[data-jing-busuanzi="true"], script[src*="busuanzi"]');
+    if (existing) {
+      if (window.bszCaller && window.bszTag) {
+        window.bszCaller.fetch('//busuanzi.ibruce.info/busuanzi?jsonpCallback=BusuanziCallback', (data) => {
+          window.bszTag.texts(data);
+          window.bszTag.shows();
+        });
+      }
+      return;
+    }
+
+    const script = document.createElement('script');
+    script.async = true;
+    script.defer = true;
+    script.dataset.jingBusuanzi = 'true';
+    script.src = scriptUrl;
+    script.onerror = () => {
+      document.querySelectorAll('.jing-site-stats').forEach((node) => {
+        node.hidden = true;
+      });
+    };
+    document.head.append(script);
+  }
+
+  function initSiteStats() {
+    const footerWrap = document.querySelector('#footer-wrap');
+    if (!footerWrap) return;
+
+    let stats = footerWrap.querySelector('.jing-site-stats');
+    if (!stats) {
+      stats = document.createElement('div');
+      stats.className = 'jing-site-stats';
+      stats.hidden = true;
+      footerWrap.append(stats);
+    }
+
+    stats.hidden = false;
+    stats.innerHTML = '';
+
+    const separator = document.createElement('span');
+    separator.className = 'jing-site-stats-separator';
+    separator.textContent = '|';
+
+    const visitorItem = createSiteStatItem(
+      '本站访客数',
+      'busuanzi_value_site_uv',
+      'busuanzi_container_site_uv',
+      '人次',
+    );
+    const viewItem = createSiteStatItem(
+      '本站总访问量',
+      'busuanzi_value_site_pv',
+      'busuanzi_container_site_pv',
+      '次',
+    );
+
+    stats.append(visitorItem, separator, viewItem);
+    loadBusuanzi();
+  }
+
   function ensureGuestbookMenu() {
     const menuTargets = [
       document.querySelector('#menus .menus_items'),
@@ -579,6 +660,7 @@
     updateDateCategories();
     initArchiveSearch();
     trackPostView();
+    window.setTimeout(initSiteStats, 250);
     initGuestbook();
   }
 

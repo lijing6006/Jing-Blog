@@ -1102,6 +1102,40 @@ a {
   color: var(--jing-muted);
 }
 
+.jing-site-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+  align-items: center;
+  justify-content: center;
+  margin-top: 12px;
+  color: var(--jing-muted);
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.jing-site-stats[hidden] {
+  display: none !important;
+}
+
+.jing-site-stats-item {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  align-items: baseline;
+  justify-content: center;
+}
+
+.jing-site-stats strong {
+  color: var(--jing-text);
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.jing-site-stats-separator {
+  color: var(--jing-faint);
+}
+
 .social-icon a[href*="linux.do"] i,
 .card-info-social-icons a[href*="linux.do"] i {
   width: 1em;
