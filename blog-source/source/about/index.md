@@ -49,11 +49,11 @@ type: about
         <i class="fas fa-envelope"></i>
         <span>Keep6006@163.com</span>
       </a>
-      <a href="https://github.com/lijing6006" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+      <a href="javascript:void(0)" aria-label="GitHub">
         <i class="fab fa-github"></i>
         <span>GitHub</span>
       </a>
-      <a href="https://gitee.com/lijing-dev" target="_blank" rel="noopener noreferrer" aria-label="Gitee">
+      <a href="javascript:void(0)" aria-label="Gitee">
         <i class="fab fa-git-alt"></i>
         <span>Gitee</span>
       </a>

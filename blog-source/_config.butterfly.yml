@@ -51,9 +51,9 @@ code_blocks:
 # Formal:
 #   icon: link || the description || color
 social:
-  fab fa-github: https://github.com/lijing6006 || GitHub || '#24292e'
+  fab fa-github: javascript:void(0) || GitHub || '#24292e'
   fas fa-envelope: mailto:Keep6006@163.com || Email || '#4a7dbe'
-  fab fa-git-alt: https://gitee.com/lijing-dev || Gitee || '#C71D23'
+  fab fa-git-alt: javascript:void(0) || Gitee || '#C71D23'
   icon-linuxdo: https://linux.do/u/keep6006/summary || Linux.do || '#3f4752'
 
 # --------------------------------------
@@ -297,7 +297,7 @@ aside:
       enable: false
       icon: fab fa-github
       text: GitHub
-      link: https://github.com/
+      link: javascript:void(0)
   card_announcement:
     enable: false
     content: 欢迎来到 Jing's Blog，这里记录 Java 后端、数据库、中间件和工程实践。

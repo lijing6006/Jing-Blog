@@ -39,11 +39,11 @@ function socialText(value, fallback = '未设置') {
 
 function setThemeSettings(theme, values) {
   const socialLines = ['social:'];
-  if (values.github) {
-    socialLines.push(
-      `  fab fa-github: ${values.github} || GitHub || '#24292e'`,
-    );
-  }
+  const githubLink = values.github || 'javascript:void(0)';
+  const giteeLink = values.gitee || 'javascript:void(0)';
+  socialLines.push(
+    `  fab fa-github: ${githubLink} || GitHub || '#24292e'`,
+  );
   if (values.email) {
     socialLines.push(
       `  fas fa-envelope: mailto:${values.email} || Email || '#4a7dbe'`,
@@ -59,11 +59,9 @@ function setThemeSettings(theme, values) {
       `  fab fa-weixin: javascript:void(0) || 微信账号 ${socialText(values.wechat, '')} || '#07C160'`,
     );
   }
-  if (values.gitee) {
-    socialLines.push(
-      `  fab fa-git-alt: ${values.gitee} || Gitee || '#C71D23'`,
-    );
-  }
+  socialLines.push(
+    `  fab fa-git-alt: ${giteeLink} || Gitee || '#C71D23'`,
+  );
   if (values.linuxdo) {
     socialLines.push(
       `  icon-linuxdo: ${values.linuxdo} || Linux.do || '#3f4752'`,
@@ -87,7 +85,7 @@ function setThemeSettings(theme, values) {
   );
   theme = theme.replace(
     /(card_author:[\s\S]*?button:[\s\S]*?link:).*/,
-    `$1 ${values.github || 'https://github.com/'}`,
+    `$1 ${githubLink}`,
   );
   theme = theme.replace(
     /(card_announcement:\r?\n\s+enable: true\r?\n\s+content:).*/,
